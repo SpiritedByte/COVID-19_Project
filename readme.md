@@ -1,3 +1,6 @@
+# WARNING
+This is where I dump all my tests of this program. Please leave me be.
+
 # Aims
 The aim of this project is to track changes over time with the current COVID-19 situation in the United Kingdom.
 # Will it ever be finished?
