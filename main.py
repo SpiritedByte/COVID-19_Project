@@ -6,4 +6,4 @@ from stats_parser import csv_parser
 import os
 
 getStats()
-csv_parser()
+# csv_parser()
