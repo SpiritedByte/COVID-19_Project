@@ -13,13 +13,14 @@ import logging
 # [?] = user input or question
 # [*] = action
 # [/] = error
-
+'''
 url_cases = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv'
 url_deaths = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-deaths_latest.csv'
 LOG_FILENAME = 'last_modified.log'
 logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
+'''
 
-##################################
+# # #
 
 # create new folder to store the statistics
 def getStats():
@@ -65,5 +66,3 @@ def getStats():
         print("[/] Failed to download COVID-19 deaths!")
     else:
         print("[!] Successfully downloaded COVID-19 deaths!")
-
-getStats()
