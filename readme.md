@@ -5,18 +5,18 @@ The aim of this project is to track changes over time with the current COVID-19 
 I have made quite a bit of progress on this project - more than I would have thought I could do.
 # To-Do List
 
-[x] Get .csv data
-[x] Save .csv data
-[x] Parse .csv data
-	[x] Save to Pandas DataFrame
-	[x] Filter rows except 'England'
-	[x] Get dates and cumulative values
-[] Plot data
-	[] Auto-updating
-	[] Standalone Python program
-	[x] Plot initial cases
-	[] Plot initial deaths
-	[] Matplotlib alternative
+- [x] Get .csv data
+- [x] Save .csv data
+- [x] Parse .csv data
+-	[x] Save to Pandas DataFrame
+-	[x] Filter rows except 'England'
+-	[x] Get dates and cumulative values
+- [] Plot data
+-	[] Auto-updating
+-	[] Standalone Python program
+-	[x] Plot initial cases
+-	[] Plot initial deaths
+-	[] Matplotlib alternative
 
 (Again, this is a small project to practice my Python abilities. This may never be finished but I thought I may as well showcase my progress on the master branch)
 # Credits
