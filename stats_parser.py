@@ -24,6 +24,6 @@ def csv_parser():
     deaths_filtered_england = deaths_filtered_england[['Reporting date', 'Cumulative deaths']]
 
     cases_filtered_england = cases_filtered_england.sort_values(by = 'Specimen date')
-
+    deaths_filtered_england = deaths_filtered_england.sort_values(by = 'Reporting date')
 
     return cases_filtered_england,deaths_filtered_england
