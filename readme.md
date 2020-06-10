@@ -12,15 +12,15 @@ I have made quite a bit of progress on this project - more than I would have tho
 -	[x] Save to Pandas DataFrame
 -	[x] Filter rows except 'England'
 -	[x] Get dates and cumulative values
-- [] Plot data
--	[] Auto-updating
--	[] Standalone Python program
+- [ ] Plot data
+-	[ ] Auto-updating
+-	[ ] Standalone Python program
 -	[x] Plot initial cases
--	[] Plot initial deaths
--	[] Matplotlib alternative
+-	[x] Plot initial deaths
+-	[ ] Matplotlib alternative (will probably happen at the same time as creating the standalone Python program
 
 # Issues
-- [] Fix fork() crash on macOS (need to think of an alternative way that makes it suitable across multiple operating systems)
+- [ ] Fix fork() crash on macOS (need to think of an alternative way that makes it suitable across multiple operating systems)
 
 (Again, this is a small project to practice my Python abilities. This may never be finished but I thought I may as well showcase my progress on the master branch)
 # Credits
