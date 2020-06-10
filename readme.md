@@ -19,6 +19,9 @@ I have made quite a bit of progress on this project - more than I would have tho
 -	[] Plot initial deaths
 -	[] Matplotlib alternative
 
+# Issues
+- [] Fix fork() crash on macOS (need to think of an alternative way that makes it suitable across multiple operating systems)
+
 (Again, this is a small project to practice my Python abilities. This may never be finished but I thought I may as well showcase my progress on the master branch)
 # Credits
 https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv
