@@ -1,4 +1,9 @@
 <a href="https://ibb.co/4WnyQ59"><img src="https://i.ibb.co/7vdc968/Untitled-design-15.png" alt="Untitled-design-15" border="0"></a>
+
+!!!
+I think I might rewrite this, because it's upsetting me how this is set out.
+!!!
+
 # Aims
 The aim of this project is to track changes over time with the current COVID-19 situation in the United Kingdom.
 # Will it ever be finished?
