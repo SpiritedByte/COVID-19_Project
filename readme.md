@@ -17,7 +17,7 @@ I have made quite a bit of progress on this project - more than I would have tho
 -	[x] Save to Pandas DataFrame
 -	[x] Filter rows except 'England'
 -	[x] Get dates and cumulative values
-- [ ] Plot data
+- [x] Plot data
 -	[ ] Auto-updating
 -	[ ] Standalone Python program
 -	[x] Plot initial cases
