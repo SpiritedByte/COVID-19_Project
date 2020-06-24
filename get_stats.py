@@ -28,9 +28,9 @@ def getStats():
     path_to_stats = cwd / path
     #print(path_to_stats)
 
-    print("[!] Checking if 'stats' folder is present...")
+    print("[*] Checking if 'stats' folder is present...")
     if not os.path.exists(path_to_stats):
-        print("[*] Creating 'stats' folder...")
+        print("[*] Does not exist. Creating 'stats' folder...")
         os.makedirs(path_to_stats)
     else:
         try:
@@ -40,8 +40,14 @@ def getStats():
             print("[@] 'covid-deaths.csv' last modified: {}".format(unix_datetime_deaths))
             logging.debug("[@] 'covid-cases.csv' last modified: {}".format(unix_datetime_cases))
             logging.debug("[@] 'covid-deaths.csv' last modified: {}".format(unix_datetime_deaths))
+
+            if unix_datetime_cases.date() and unix_datetime_deaths.date() == datetime.today().date():
+                print("[@] Local data is up-to-date. Skipping download.")
+                return None
+            else:
+                pass
         except:
-            print("[/] Hmm... I can't seem to find the CSV files required for this to function.")
+            print("[/] It appears that the data has not been downloaded.")
 
     
 
@@ -54,7 +60,7 @@ def getStats():
         traceback.print_exc()
         print("[/] Failed to download COVID-19 cases.")
     else:
-        print("[!] Successfully downloaded COVID-19 cases!")
+        print("[@] Successfully downloaded COVID-19 cases!")
 
     print("[*] Attempting to download COVID-19 deaths...")
     try:
@@ -64,4 +70,4 @@ def getStats():
     except:
         print("[/] Failed to download COVID-19 deaths!")
     else:
-        print("[!] Successfully downloaded COVID-19 deaths!")
+        print("[@] Successfully downloaded COVID-19 deaths!")
