@@ -7,17 +7,19 @@ import requests
 import os
 import traceback
 from datetime import datetime
-import logging
+#import logging
 import matplotlib.pyplot as plt
+import matplotlib.ticker as plticker
+import numpy as np
 
 ## VARIABLES AND INITIALISATION
 url_cases = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv'
 url_deaths = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-deaths_latest.csv'
-LOG_FILENAME = 'last_modified.log'
-logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
+#LOG_FILENAME = 'last_modified.log'
+#logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
 
 ## FUNCTIONS
-def bar_plot(x1=None,y1=None,x2=None,y2=None,title="Plot"):
+def bar_plot(cases=None,deaths=None,dataset=None,title="Plot"):
     #cases.plot(x='Specimen date',y='Cumulative lab-confirmed cases',color='green')
     #deaths.plot(x='Reporting date',y='Cumulative deaths',color='red')
     #plt.figure(title, figsize=[12,4])
@@ -28,11 +30,28 @@ def bar_plot(x1=None,y1=None,x2=None,y2=None,title="Plot"):
     #plt.subplots_adjust(left=0.06,bottom=0.31,right=0.99,top=0.98)
     #plt.xticks(fontsize=8)
     #plt.show()
-    plt.figure(title, figsize=[12,4])
-    plt.autoscale(tight=True)
+
+    if dataset == "cumulative":
+        y_values_cases = "Cumulative lab-confirmed cases"
+        y_values_deaths = "Cumulative deaths"
+    elif dataset == "daily":
+        y_values_cases = "Daily lab-confirmed cases"
+        y_values_deaths = "Daily change in deaths"
+
+    plt.figure(title, figsize=[12,6])
     ax = plt.gca()
-    ax.bar(x1,y1)
-    ax.bar(x2,y2)
+
+    cases.plot(kind='bar', x='Specimen date', y=y_values_cases, color='blue', ax=ax)
+    deaths.plot(kind='bar', x='Reporting date', y=y_values_deaths, color='red', ax=ax)
+
+    loc = plticker.MultipleLocator(base=2.5)
+    ax.xaxis.set_major_locator(loc)
+
+    ax.set_title(title)
+
+    plt.subplots_adjust(left=0.06,bottom=0.20,right=0.94,top=0.90)
+    plt.xticks(rotation=90)
+
     plt.show()
 
 def getStats():
@@ -51,8 +70,8 @@ def getStats():
             unix_datetime_deaths = datetime.utcfromtimestamp(os.path.getmtime(os.path.join(path_to_stats, "covid-deaths.csv")))
             print("[@] 'covid-cases.csv' last modified: {}".format(unix_datetime_cases))
             print("[@] 'covid-deaths.csv' last modified: {}".format(unix_datetime_deaths))
-            logging.debug("[@] 'covid-cases.csv' last modified: {}".format(unix_datetime_cases))
-            logging.debug("[@] 'covid-deaths.csv' last modified: {}".format(unix_datetime_deaths))
+            #logging.debug("[@] 'covid-cases.csv' last modified: {}".format(unix_datetime_cases))
+            #logging.debug("[@] 'covid-deaths.csv' last modified: {}".format(unix_datetime_deaths))
 
             if unix_datetime_cases.date() and unix_datetime_deaths.date() == datetime.today().date():
                 print("[@] Local data is up-to-date. Skipping download.")
@@ -120,16 +139,14 @@ deaths = imported[1]
 # Finally, make the graph(s)
 
 bar_plot(
-    x1=cases["Specimen date"],
-    y1=cases["Cumulative lab-confirmed cases"],
-    x2=deaths["Reporting date"],
-    y2=deaths["Cumulative deaths"],
+    cases = cases,
+    deaths = deaths,
+    dataset = "cumulative",
     title="Cumulative Cases and Deaths"
-)
-
+    )
 bar_plot(
-    x1=cases["Specimen date"],
-    y1=cases["Daily lab-confirmed cases"],
-    x2=deaths["Reporting date"],
-    y2=deaths["Daily change in deaths"]
-)
+    cases = cases,
+    deaths = deaths,
+    dataset = "daily",
+    title="Daily Cases and Deaths"
+    )
