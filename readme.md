@@ -1,4 +1,4 @@
-# COVIDTracker (by SpiritedByte
+# COVIDTracker (by SpiritedByte)
 
 # What is it?
 It is a Python 3 script that locally stores the latest England data for COVID-19 (deaths and cases), and then uses Matplotlib to plot the data onto a graph (bar graph by default).
