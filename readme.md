@@ -1,33 +1,34 @@
-<a href="https://ibb.co/4WnyQ59"><img src="https://i.ibb.co/7vdc968/Untitled-design-15.png" alt="Untitled-design-15" border="0"></a>
+# COVIDTracker (by SpiritedByte
 
-!!!
-I think I might rewrite this, because it's upsetting me how this is set out.
-!!!
+# What is it?
+It is a Python 3 script that locally stores the latest England data for COVID-19 (deaths and cases), and then uses Matplotlib to plot the data onto a graph (bar graph by default).
 
-# Aims
-The aim of this project is to track changes over time with the current COVID-19 situation in the United Kingdom.
-# Will it ever be finished?
-~~Probably not. This is just a small project to practice my Python skills, and I will probably never be happy with the outcome either way.~~
-I have made quite a bit of progress on this project - more than I would have thought I could do.
-# To-Do List
+It was created to play around with Python and develop my skills.
 
-- [x] Get .csv data
-- [x] Save .csv data
-- [x] Parse .csv data
--	[x] Save to Pandas DataFrame
--	[x] Filter rows except 'England'
--	[x] Get dates and cumulative values
-- [x] Plot data
--	[ ] Auto-updating
--	[ ] Standalone Python program
--	[x] Plot initial cases
--	[x] Plot initial deaths
--	[ ] Matplotlib alternative (will probably happen at the same time as creating the standalone Python program
+# Prerequisites
+* Python 3.8+
 
-# Issues
-- [ ] Fix fork() crash on macOS (need to think of an alternative way that makes it suitable across multiple operating systems)
+# Modules used
+* os
+* sys
+* pathlib
+* pandas
+* requests
+* traceback
+* datetime
+* matplotlib
 
-(Again, this is a small project to practice my Python abilities. This may never be finished but I thought I may as well showcase my progress on the master branch)
-# Credits
-https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv
-https://coronavirus.data.gov.uk/downloads/csv/coronavirus-deaths_latest.csv
+# Installation & Usage
+Clone this repo:
+```
+git clone https://github.com/SpiritedByte/COVID-19_Project.git
+```
+Change working directory to folder:
+```
+cd [foldername]
+```
+Run from terminal using:
+```
+python3 main.py
+```
+The script should handle the rest.
