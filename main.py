@@ -8,7 +8,6 @@ import traceback
 from datetime import datetime
 import matplotlib.pyplot as plt
 
-
 # VARIABLES AND INITIALISATION
 url_cases = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv'
 url_deaths = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-deaths_latest.csv'
@@ -38,8 +37,7 @@ def bar_plot(cases=None, deaths=None, dataset=None, title="Plot"):
         x='Specimen date',
         y=y_values_cases,
         color='blue',
-        ax=ax,
-        sharex=True)
+        ax=ax)
     deaths.plot(
         kind='bar',
         x='Reporting date',
