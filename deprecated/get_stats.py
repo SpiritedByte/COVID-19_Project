@@ -14,10 +14,12 @@ import logging
 # [*] = action
 # [/] = error
 
-url_cases = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv'
-url_deaths = 'https://coronavirus.data.gov.uk/downloads/csv/coronavirus-deaths_latest.csv'
-LOG_FILENAME = 'last_modified.log'
-logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
+url_cases = "https://coronavirus.data.gov.uk/downloads/csv/coronavirus-cases_latest.csv"
+url_deaths = (
+    "https://coronavirus.data.gov.uk/downloads/csv/coronavirus-deaths_latest.csv"
+)
+LOG_FILENAME = "last_modified.log"
+logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG)
 
 # # #
 
@@ -26,7 +28,7 @@ def getStats():
     cwd = os.path.dirname(os.path.realpath(__file__))
     path = Path("stats/")
     path_to_stats = cwd / path
-    #print(path_to_stats)
+    # print(path_to_stats)
 
     print("[*] Checking if 'stats' folder is present...")
     if not os.path.exists(path_to_stats):
@@ -34,14 +36,27 @@ def getStats():
         os.makedirs(path_to_stats)
     else:
         try:
-            unix_datetime_cases = datetime.utcfromtimestamp(os.path.getmtime(os.path.join(path_to_stats, "covid-cases.csv")))
-            unix_datetime_deaths = datetime.utcfromtimestamp(os.path.getmtime(os.path.join(path_to_stats, "covid-deaths.csv")))
+            unix_datetime_cases = datetime.utcfromtimestamp(
+                os.path.getmtime(os.path.join(path_to_stats, "covid-cases.csv"))
+            )
+            unix_datetime_deaths = datetime.utcfromtimestamp(
+                os.path.getmtime(os.path.join(path_to_stats, "covid-deaths.csv"))
+            )
             print("[@] 'covid-cases.csv' last modified: {}".format(unix_datetime_cases))
-            print("[@] 'covid-deaths.csv' last modified: {}".format(unix_datetime_deaths))
-            logging.debug("[@] 'covid-cases.csv' last modified: {}".format(unix_datetime_cases))
-            logging.debug("[@] 'covid-deaths.csv' last modified: {}".format(unix_datetime_deaths))
+            print(
+                "[@] 'covid-deaths.csv' last modified: {}".format(unix_datetime_deaths)
+            )
+            logging.debug(
+                "[@] 'covid-cases.csv' last modified: {}".format(unix_datetime_cases)
+            )
+            logging.debug(
+                "[@] 'covid-deaths.csv' last modified: {}".format(unix_datetime_deaths)
+            )
 
-            if unix_datetime_cases.date() and unix_datetime_deaths.date() == datetime.today().date():
+            if (
+                unix_datetime_cases.date()
+                and unix_datetime_deaths.date() == datetime.today().date()
+            ):
                 print("[@] Local data is up-to-date. Skipping download.")
                 return None
             else:
@@ -49,12 +64,10 @@ def getStats():
         except:
             print("[/] It appears that the data has not been downloaded.")
 
-    
-
     print("[*] Attempting to download COVID-19 cases...")
     try:
         response = requests.get(url_cases)
-        with open(os.path.join(path_to_stats, "covid-cases.csv"), 'wb') as f:
+        with open(os.path.join(path_to_stats, "covid-cases.csv"), "wb") as f:
             f.write(response.content)
     except:
         traceback.print_exc()
@@ -65,7 +78,7 @@ def getStats():
     print("[*] Attempting to download COVID-19 deaths...")
     try:
         response = requests.get(url_deaths)
-        with open(os.path.join(path_to_stats, "covid-deaths.csv"), 'wb') as f:
+        with open(os.path.join(path_to_stats, "covid-deaths.csv"), "wb") as f:
             f.write(response.content)
     except:
         print("[/] Failed to download COVID-19 deaths!")

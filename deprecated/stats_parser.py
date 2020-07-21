@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 import pandas as pd
 
+
 def csv_parser():
     # Get abs path
     cwd = os.path.dirname(os.path.realpath(__file__))
@@ -18,11 +19,11 @@ def csv_parser():
     deaths = pd.read_csv(covid_death_file_path)
 
     # Get England data
-    cases_filtered_england = cases.loc[cases['Area name'] == "England"]
-    deaths_filtered_england = deaths.loc[deaths['Area name'] == "England"]
+    cases_filtered_england = cases.loc[cases["Area name"] == "England"]
+    deaths_filtered_england = deaths.loc[deaths["Area name"] == "England"]
     ## CUMULATIVE DATA
     # Sort by date
-    cases_sorted = cases_filtered_england.sort_values(by = 'Specimen date')
-    deaths_sorted = deaths_filtered_england.sort_values(by = 'Reporting date')
+    cases_sorted = cases_filtered_england.sort_values(by="Specimen date")
+    deaths_sorted = deaths_filtered_england.sort_values(by="Reporting date")
 
-    return cases_sorted,deaths_sorted
+    return cases_sorted, deaths_sorted
